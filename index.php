@@ -26,6 +26,16 @@ if ( have_posts() ) :
 
 	<?php __tm_ads_home_before_loop(); ?>
 
+	<div id="vue-posts-list">
+		<section class="grid">
+			<div class="grid__item card" v-for="post in posts">
+				<div class="card__body">
+					<img :src="post.featured_image_src" alt="">
+				</div>
+			</div>
+		</section>
+	</div>
+
 	<?php /* Start the Loop */
 	while ( have_posts() ) : the_post();
 

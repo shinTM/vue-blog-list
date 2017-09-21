@@ -322,6 +322,7 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/context.php';
 			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/customizer.php';
 			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/hooks.php';
+			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/wp-rest-api-end-point.php';
 			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/register-plugins.php';
 
 			/**
@@ -587,6 +588,11 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 			wp_register_script( 'jquery-totop', __TM_THEME_JS . '/min/jquery.ui.totop.min.js', array( 'jquery' ), '1.2.0', true );
 			wp_register_script( 'jquery-cherry-responsive-menu', __TM_THEME_JS . '/cherry-responsive-menu.js', array( 'jquery' ), '1.0.0', true );
 
+
+			wp_register_script( 'vue-js', 'https://unpkg.com/vue/dist/vue.js', array(), '1.0.0', true );
+			wp_register_script( 'vue-resource', 'https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js', array(), '1.0.0', true );
+			wp_register_script( 'vue-posts-list', __TM_THEME_JS . '/vue-posts-list.js', array( 'vue-js', 'vue-resource' ), '1.0.0', true );
+
 			wp_register_style( 'jquery-slider-pro', __TM_THEME_CSS . '/slider-pro.min.css', array(), '1.2.4' );
 			wp_register_style( 'jquery-swiper', __TM_THEME_CSS . '/swiper.min.css', array(), '3.4.0' );
 			wp_register_style( 'magnific-popup', __TM_THEME_CSS . '/magnific-popup.min.css', array(), '1.1.0' );
@@ -620,6 +626,7 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 				'jquery-cherry-responsive-menu',
 			) );
 
+			wp_enqueue_script( 'vue-posts-list' );
 			wp_enqueue_script( '__tm-theme-script', __TM_THEME_JS . '/theme-script.js', $depends, __TM_THEME_VERSION, true );
 
 			/**
@@ -648,6 +655,15 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 					'labels'              => $labels,
 					'more_button_options' => $more_button_options,
 			) ) );
+
+			wp_localize_script( 'vue-posts-list', 'vuePostsList', apply_filters(
+				'__tm_theme_vue_posts_list',
+				array(
+					'siteUrl' => esc_url( home_url( '/' ) ),
+					'root'    => esc_url_raw( rest_url() ),
+					'nonce'   => wp_create_nonce( 'wp_rest' ),
+				)
+			) );
 
 			// Threaded Comments.
 			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

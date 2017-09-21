@@ -38,46 +38,6 @@ function update_post_end_point() {
 			'schema'          => null,
 		)
 	);
-
-	//Add get_author_data
-	register_rest_field( 'post',
-		'author_data',
-		array(
-			'get_callback'    => 'get_author_data',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
-
-	//Add custom_format_date
-	register_rest_field( 'post',
-		'custom_format_date',
-		array(
-			'get_callback'    => 'get_custom_format_date',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
-
-	//Add custom_format_date
-	register_rest_field( 'post',
-		'is_visible',
-		array(
-			'get_callback'    => 'get_is_visible',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
-
-	//Add custom_format_date
-	register_rest_field( 'post',
-		'comments_amount',
-		array(
-			'get_callback'    => 'get_comments_amount',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
 }
 
 function get_featured_image_src( $object, $field_name, $request ) {
@@ -108,31 +68,4 @@ function get_excerpt( $object, $field_name, $request ) {
 	return $excerpt;
 }
 
-function get_author_data( $object, $field_name, $request ) {
-
-	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
-	$author_data['author_link'] = get_author_posts_url( $object['author'] );
-
-	return $author_data;
-}
-
-function get_custom_format_date( $object, $field_name, $request ) {
-
-	$date_post_format = apply_filters( 'cherry_react_custom_format_date', '' );
-	$date_post_format = ( ! empty( $date_post_format ) ) ? $date_post_format : get_option( 'date_format' );
-
-	return get_the_date( $date_post_format );
-}
-
-function get_is_visible( $object, $field_name, $request ) {
-
-	return false;
-}
-
-function get_comments_amount( $object, $field_name, $request ) {
-
-	$count_comments = wp_count_comments( $object['id'] );
-
-	return $count_comments->total_comments;
-}
 
