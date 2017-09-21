@@ -1,0 +1,395 @@
+/* Basic */
+.main-navigation {
+	display: block;
+	clear: both;
+	width: 100%;
+	ul {
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+		ul {
+			a {
+				text-indent: 1rem;
+			}
+			ul {
+				a {
+					text-indent: 2rem;
+				}
+				ul {
+					a {
+						text-indent: 3rem;
+					}
+					ul {
+						a {
+							text-indent: 4rem;
+						}
+						ul {
+							a {
+								text-indent: 5rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.menu {
+		display: block;
+		position: relative;
+		.menu-link-wrapper {
+			position: relative;
+		}
+	}
+
+	li {
+		position: relative;
+		text-align: left;
+	}
+
+	a {
+		position: relative;
+		display: block;
+		text-decoration: none;
+	}
+
+	@include media-breakpoint-up( sm ) {
+		.menu {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			.default & {
+				display: block;
+			}
+			> li {
+				display: flex;
+				align-items: flex-start;
+				.default & {
+					display: inline-block;
+				}
+			}
+		}
+
+		li {
+			&.menu-hover {
+				& > ul {
+					top: 100%;
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+			li {
+				&.menu-hover {
+					& > ul {
+						top: 0;
+						opacity: 1;
+						visibility: visible;
+						&.left-side {
+							left: auto;
+							right: 100%;
+						}
+					}
+				}
+			}
+		}
+
+		.sub-menu {
+			display: block;
+			position: absolute;
+			z-index: 999;
+			top: 120%;
+			left: 0;
+			opacity: 0;
+			visibility: hidden;
+			transition: top .2s linear .1s,
+						opacity .2s linear .1s,
+						visibility .1s linear .2s;
+			box-shadow: 2px 2px 4px rgba( 0, 0, 0, 0.2 );
+
+			ul {
+				top: 20%;
+				left: 100%;
+			}
+
+			.menu-item-has-children {
+				.menu-link-wrapper {
+					&:after {
+						right: 20px;
+					}
+				}
+			}
+		}
+
+		ul {
+			a {
+				text-indent: 0;
+			}
+		}
+
+	}
+}
+
+/* Skin Styles */
+.main-navigation {
+	a {
+		padding: 1.5em;
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.menu-link-wrapper {
+		border-bottom: 1px solid #e0e0e8;
+	}
+
+	.menu {
+		> li {
+			> a,
+			> .menu-link-wrapper {
+				@include media-breakpoint-up(sm) {
+					border-bottom: none;
+				}
+			}
+			&:last-child {
+				> a,
+				> .menu-link-wrapper {
+					border-bottom: none;
+				}
+			}
+			&.menu-hover,
+			&.current_page_item,
+			&.current_page_ancestor,
+			&.current-menu-item,
+			&.current-menu-ancestor {
+				> a,
+				> .menu-link-wrapper > a {
+					/* Active and hover state (level 1) */
+				}
+			}
+		}
+	}
+
+	.menu-item-has-children {
+		>.menu-link-wrapper {
+			&:after {
+				position: absolute;
+				cursor: pointer;
+				top: 50%;
+				right: 20px;
+				margin-top: -9px;
+				@include font-awesome-icon;
+				@include font-size(1.125);
+				text-align: center;
+				transition: all .2s cubic-bezier(.13,.51,.26,.98);
+				content: '\f105';
+
+				@include media-breakpoint-up(sm) {
+					right: 0;
+				}
+			}
+		}
+
+		&.cherry-responsive-menu-avaliable-items {
+			>.menu-link-wrapper {
+				&:after {
+					content: none;
+				}
+			}
+		}
+	}
+
+	.sub-menu {
+		&.left-side {
+			left: auto;
+			right: 100%;
+		}
+
+		li {
+			@include media-breakpoint-up(sm) {
+				&:last-of-type {
+					& > a,
+					& > .menu-link-wrapper > a {
+						border-bottom: none;
+					}
+				}
+			}
+		}
+		a {
+			@include font-size(0.875);
+			@include media-breakpoint-up(sm) {
+				width: 15em;
+				padding: 1em;
+			}
+		}
+		li.menu-hover,
+		li.current_page_item,
+		li.current_page_ancestor,
+		li.current-menu-item,
+		li.current-menu-ancestor {
+			> a,
+			> .menu-link-wrapper > a {
+				/* Active and hover state (level 2, 3, ..., N) */
+			}
+		}
+	}
+}
+
+.main-navigation.mobile-menu {
+	position: fixed;
+	top: 0;
+	right: -70%;
+	z-index: 998;
+	max-width: 70%;
+	height: 100vh;
+	transition: all .3s cubic-bezier(.35,.19,.45,.91);
+
+	.main-navigation-inner{
+		overflow-y: scroll;
+		display: block;
+		height: 100%;
+	}
+
+	li {
+		&.menu-hover {
+			> .menu-link-wrapper {
+				&:after {
+					transform: rotate(90deg);
+				}
+			}
+			& > ul {
+				max-height: 500px;
+				transition: max-height 0.4s cubic-bezier(.76,.09,.29,.97);
+			}
+		}
+	}
+
+	.sub-menu {
+		box-shadow: inset 0  8px 8px -8px rgba( 0, 0, 0, 0.1),
+					inset 0 -8px 8px -8px rgba( 0, 0, 0, 0.1);
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.4s cubic-bezier(.16,.57,.32,.94);
+	}
+}
+
+body.mobile-menu-active {
+	/* Mobile menu active styles */
+}
+
+body.mobile-menu-visible {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+
+	.site-content,
+	.site-footer,
+	.site-header .social-list,
+	.site-header .site-branding,
+	.site-header .top-panel {
+		pointer-events: none;
+		filter: grayscale(100%);
+	}
+
+	.main-navigation.mobile-menu {
+		right: 0;
+		transition: all .6s cubic-bezier(.35,.19,.45,.91);
+		box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+
+		.mobile-menu-toggle-button {
+			.menu-toggle__icon {
+				&::after {
+					content: '\f00d';
+				}
+			}
+		}
+	}
+}
+
+/* Toogle button styles */
+.mobile-menu-toggle-button {
+	width: 35px;
+	height: 35px;
+	display: block;
+	position: absolute;
+	padding: 0;
+	border-width: 0;
+	left: -45px;
+	top: 10px;
+	box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.3);
+
+	@include media-breakpoint-up(sm) {
+		display: none;
+	}
+
+	.menu-toggle__icon {
+		@include font-awesome-icon;
+		@include font-size(1.125);
+		vertical-align: top;
+		&::after {
+			top: .75em;
+			content: '\f0c9';
+		}
+	}
+}
+
+body.admin-bar {
+	.mobile-menu-toggle-button {
+		top: 56px;
+	}
+
+	.mobile-menu {
+		.menu {
+			margin-top: 46px;
+		}
+	}
+}
+
+/* Submenu marker base styles */
+.submenu-marker {
+	position: absolute;
+	cursor: pointer;
+	top: 50%;
+	right: 0px;
+	margin-top: -9px;
+	@include font-awesome-icon;
+	@include font-size(1.125);
+	text-align: center;
+	transition: all .2s cubic-bezier(.13,.51,.26,.98);
+	z-index: 1;
+
+	&::before {
+		top: .75em;
+		content: '\f105';
+	}
+
+	@include media-breakpoint-up(sm) {
+		right: 0;
+	}
+}
+
+/* Menu items description */
+.menu-item__desc {
+	@include font-size(.625);
+	@include media-breakpoint-up(sm) {
+		.menu > li > a > &,
+		.menu > li > .menu-link-wrapper > a > & {
+			position: absolute;
+		}
+	}
+}
+
+.cherry-responsive-menu {
+	.menu {
+		> li {
+			&[hidden] {
+				display: none;
+			}
+		}
+	}
+
+	&-avaliable-items {
+		&[hidden] {
+			display: none;
+		}
+	}
+}

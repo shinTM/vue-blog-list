@@ -1,0 +1,12 @@
+#tm_builder_outer_content {
+	.tm_pb_video_overlay .tm_pb_video_overlay_hover a.tm_pb_video_play {
+		@include font-size(4);
+		&::before {
+			content: 'play_arrow';
+			text-align: center;
+			vertical-align: middle;
+
+			@include material-icon;
+		}
+	}
+}

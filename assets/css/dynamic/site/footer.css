@@ -1,0 +1,10 @@
+/* #Footer */
+.site-footer {
+	background-color: $footer_bg;
+}
+.footer-area-wrap {
+	background-color: $footer_widgets_bg;
+}
+.site-info a:hover {
+	color: $regular_text_color;
+}

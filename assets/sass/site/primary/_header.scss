@@ -1,0 +1,31 @@
+.header-container {
+	padding: 1.5rem $grid-gutter-width/2 0;
+
+	@include media-breakpoint-up(md) {
+		&.isStuck {
+			position: fixed;
+			z-index: 1000;
+			right: 0;
+			left: 0;
+		}
+	}
+	.container & {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+.pseudoStickyBlock {
+	display:none;
+	@include media-breakpoint-up(md) {
+		display: block;
+	}
+}
+
+@import "header/layout-default";
+@import "header/layout-centered";
+@import "header/layout-minimal";
+@import "header/layout-transparent";
+@import "header/layout-mobile";
+@import "header/top-panel";
+@import "header/logo";

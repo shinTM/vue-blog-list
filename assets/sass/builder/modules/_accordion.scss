@@ -1,0 +1,32 @@
+#tm_builder_outer_content {
+	.tm_pb_module.tm_pb_accordion .tm_pb_toggle {
+		&.tm_pb_toggle_close,
+		&.tm_pb_toggle_open {
+			.tm_pb_toggle_title {
+				padding: 15px 45px 15px 30px;
+
+				@include media-breakpoint-up(md) {
+					padding: 15px 55px;
+					&::before {
+						right: 12px;
+					}
+				}
+				&::before {
+					right: 6px;
+					left: auto;
+				}
+			}
+		}
+		&.tm_pb_toggle_close {
+			.tm_pb_toggle_title::before {
+				content: '\E148';
+			}
+		}
+		&.tm_pb_toggle_open {
+			.tm_pb_toggle_title::before {
+				content: '\E15D';
+				transform: rotate(0);
+			}
+		}
+	}
+}

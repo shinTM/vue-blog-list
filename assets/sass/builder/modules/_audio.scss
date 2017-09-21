@@ -1,0 +1,24 @@
+#tm_builder_outer_content {
+	.tm_pb_audio_module.tm_pb_module {
+		@include media-breakpoint-down(md) {
+			.tm_pb_audio_cover_art {
+				position: relative;
+				width: auto;
+				padding-bottom: 60%;
+			}
+			.tm_pb_audio_module_content {
+				margin-left: 0;
+			}
+		}
+		.tm_audio_container {
+			.mejs-volume-button {
+				button {
+					overflow: visible;
+				}
+			}
+			span.mejs-currenttime {
+				@include font-size(1.0625);
+			}
+		}
+	}
+}

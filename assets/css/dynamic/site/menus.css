@@ -1,0 +1,130 @@
+/* #Main Menu */
+.main-navigation {
+	font-style: $main_menu_font_style;
+	font-weight: $main_menu_font_weight;
+	font-size: $main_menu_font_size{px};
+	line-height: $main_menu_line_height;
+	font-family: @font_family( $main_menu_font_family );
+	letter-spacing: $main_menu_letter_spacing{px};
+}
+.main-navigation .menu > li > a,
+.main-navigation .menu > li > .menu-link-wrapper > a {
+	color: $main_menu_text_color;
+}
+.main-navigation .menu > li > a:hover,
+.main-navigation .menu > li.menu-hover > a,
+.main-navigation .menu > li.current_page_item > a,
+.main-navigation .menu > li.current_page_ancestor > a,
+.main-navigation .menu > li.current-menu-item > a,
+.main-navigation .menu > li.current-menu-ancestor > a {
+	color: $main_menu_hover_text_color;
+}
+.main-navigation .menu > li > .menu-link-wrapper > a:hover,
+.main-navigation .menu > li.menu-hover > .menu-link-wrapper > a,
+.main-navigation .menu > li.current_page_item > .menu-link-wrapper > a,
+.main-navigation .menu > li.current_page_ancestor > .menu-link-wrapper > a,
+.main-navigation .menu > li.current-menu-item > .menu-link-wrapper > a,
+.main-navigation .menu > li.current-menu-ancestor > .menu-link-wrapper > a {
+	color: $main_menu_hover_text_color;
+}
+.main-navigation .sub-menu {
+	background: $regular_accent_color_3;
+}
+.main-navigation ul ul a {
+	color: $regular_text_color;
+}
+.main-navigation .sub-menu > li > a:hover,
+.main-navigation .sub-menu > li.menu-hover > a,
+.main-navigation .sub-menu > li.current_page_item > a,
+.main-navigation .sub-menu > li.current_page_ancestor > a,
+.main-navigation .sub-menu > li.current-menu-item > a,
+.main-navigation .sub-menu > li.current-menu-ancestor > a {
+	color: $main_menu_hover_text_color;
+}
+.main-navigation .sub-menu > li > .menu-link-wrapper > a:hover,
+.main-navigation .sub-menu > li.menu-hover > .menu-link-wrapper > a,
+.main-navigation .sub-menu > li.current_page_item > .menu-link-wrapper > a,
+.main-navigation .sub-menu > li.current_page_ancestor > .menu-link-wrapper > a,
+.main-navigation .sub-menu > li.current-menu-item > .menu-link-wrapper > a,
+.main-navigation .sub-menu > li.current-menu-ancestor > .menu-link-wrapper > a {
+	color: $main_menu_hover_text_color;
+}
+.menu-item__desc {
+	color: $regular_text_color;
+}
+
+/* #Inverted Main Menu */
+.invert .main-navigation .menu > li > a,
+.invert .main-navigation .menu > li > .menu-link-wrapper > a,
+.invert .main-navigation .menu > li::after {
+	color: $invert_accent_color_1;
+}
+.invert .main-navigation .menu > li > a:hover,
+.invert .main-navigation .menu > li.menu-hover > a,
+.invert .main-navigation .menu > li.current_page_item > a,
+.invert .main-navigation .menu > li.current_page_ancestor > a,
+.invert .main-navigation .menu > li.current-menu-item > a,
+.invert .main-navigation .menu > li.current-menu-ancestor > a {
+	color: $invert_accent_color_1;
+}
+.invert .main-navigation .menu > li > .menu-link-wrapper > a:hover,
+.invert .main-navigation .menu > li.menu-hover > .menu-link-wrapper > a,
+.invert .main-navigation .menu > li.current_page_item > .menu-link-wrapper > a,
+.invert .main-navigation .menu > li.current_page_ancestor > .menu-link-wrapper > a,
+.invert .main-navigation .menu > li.current-menu-item > .menu-link-wrapper > a,
+.invert .main-navigation .menu > li.current-menu-ancestor > .menu-link-wrapper > a {
+	color: $invert_accent_color_1;
+}
+.invert .main-navigation .sub-menu > li > a:hover,
+.invert .main-navigation .sub-menu > li::after,
+.invert .main-navigation .sub-menu > li.menu-hover > a,
+.invert .main-navigation .sub-menu > li.menu-hover > .menu-link-wrapper > a,
+.invert .main-navigation .sub-menu > li.current_page_item > a,
+.invert .main-navigation .sub-menu > li.current_page_item > .menu-link-wrapper > a,
+.invert .main-navigation .sub-menu > li.current_page_ancestor > a,
+.invert .main-navigation .sub-menu > li.current_page_ancestor > .menu-link-wrapper > a,
+.invert .main-navigation .sub-menu > li.current-menu-item > a,
+.invert .main-navigation .sub-menu > li.current-menu-item > .menu-link-wrapper > a,
+.invert .main-navigation .sub-menu > li.current-menu-ancestor > a,
+.invert .main-navigation .sub-menu > li.current-menu-ancestor > .menu-link-wrapper > a {
+	color: $regular_accent_color_1;
+}
+
+/* #Footer Menu */
+.footer-menu__items {
+	font-style: $footer_menu_font_style;
+	font-weight: $footer_menu_font_weight;
+	font-size: $footer_menu_font_size{px};
+	line-height: $footer_menu_line_height;
+	font-family: @font_family( $footer_menu_font_family );
+	letter-spacing: $footer_menu_letter_spacing{px};
+}
+.footer-menu__items > li > a {
+	color: $footer_menu_text_color;
+}
+.footer-menu__items > li > a:hover {
+	color: $footer_menu_hover_text_color;
+}
+.footer-menu__items li.current-menu-item a,
+.footer-menu__items li.current_page_item a {
+	color: $regular_text_color;
+}
+
+/* #Mobile menu styles */
+.main-navigation.mobile-menu {
+	background-color: $regular_accent_color_3;
+}
+
+.main-navigation.mobile-menu .sub-menu {
+	background-color: @darken( $regular_accent_color_3, 2% );
+}
+
+.main-navigation.mobile-menu .sub-menu .sub-menu {
+	background-color: @darken( $regular_accent_color_3, 4% );
+}
+
+/* #Mobile menu toogle */
+.mobile-menu-toggle-button {
+	color: $regular_accent_color_3;
+	background-color: $regular_accent_color_1;
+}

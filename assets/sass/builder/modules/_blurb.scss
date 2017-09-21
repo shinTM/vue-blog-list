@@ -1,0 +1,15 @@
+#tm_builder_outer_content {
+	.tm_pb_blurb.tm_pb_module {
+		.tm-pb-icon {
+			@include font-size(4);
+		}
+		.tm_pb_blurb_container {
+			h4 {
+				padding-bottom: 20px;
+			}
+		}
+		&.tm_pb_blurb_position_top {
+			.tm_pb_main_blurb_image {}
+		}
+	}
+}

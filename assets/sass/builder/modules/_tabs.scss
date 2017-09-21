@@ -1,0 +1,17 @@
+#tm_builder_outer_content {
+	.tm_pb_tabs.tm_pb_module {
+		.tm_pb_tabs_controls {
+			li {
+				a {
+					transition: .3s all ease;
+				}
+				&.tm_pb_tab_active {
+				}
+			}
+		}
+		.tm_pb_all_tabs {
+			.tm_pb_tab {
+			}
+		}
+	}
+}

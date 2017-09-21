@@ -1,0 +1,14 @@
+#tm_builder_outer_content {
+	.tm_pb_circle_counter {
+		max-width: 100%;
+		.tm_pb_circle_counter_bar {
+			max-width: 100%;
+			.percent {
+			}
+			canvas {
+				max-width: 100% !important;
+				height: auto !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+#tm_builder_outer_content {
+	.tm_pb_module.tm_pb_toggle {
+		padding: 0;
+		border: none;
+		&.tm_pb_toggle_close,
+		&.tm_pb_toggle_open {
+			transition: .3s linear;
+			.tm_pb_toggle_title {
+				margin: 0;
+				padding: 15px 30px 15px 45px;
+
+				@include media-breakpoint-up(md) {
+					padding: 15px 55px;
+					&::before {
+						left: 12px;
+					}
+				}
+				&::before {
+					left: 6px;
+					content: '\E5CC';
+					transition: .3s ease-in-out;
+
+					@include material-icon;
+					@include font-size(2);
+					@include media-breakpoint-down(lg) {
+						top: 15px;
+						margin-top: 0;
+					}
+				}
+			}
+		}
+		&.tm_pb_toggle_open {
+			.tm_pb_toggle_title::before {
+				transform: rotate(90deg);
+			}
+		}
+		.tm_pb_toggle_content {
+			padding: 15px 30px;
+
+			@include media-breakpoint-up(md) {
+				padding: 15px 55px;
+			}
+		}
+	}
+}

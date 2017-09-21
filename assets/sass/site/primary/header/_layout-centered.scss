@@ -1,0 +1,8 @@
+.site-header.centered {
+	@include media-breakpoint-up(md) {
+		text-align: center;
+	}
+	.main-navigation {
+		padding-top: 1em;
+	}
+}

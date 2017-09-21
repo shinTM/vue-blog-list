@@ -1,0 +1,12 @@
+.contact-information-widget{
+	&__inner{
+		li{
+			margin-left:0;
+			.icon{
+				font-size: 2em;
+				transform: translateY(0.2em);
+				margin-right: 5px;
+			}
+		}
+	}
+}
