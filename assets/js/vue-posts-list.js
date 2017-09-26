@@ -5,17 +5,46 @@
 
 		init: function() {
 
-			new Vue({
+			Vue.component( 'posts-list', {
+				template: '#posts-list-template',
+				props: [ 'posts' ]
+			} );
+
+			Vue.component( 'more-button', {
+				template: '#more-button-template',
+				props: [ 'page', 'totalPages' ],
+				data: function () {
+					return {
+						active: true
+					}
+				},
+				methods: {
+					loadMore: function() {
+						var currentPage = this.page;
+
+						currentPage++;
+
+						if ( this.page >= this.totalPages ) {
+							this.active = false;
+							return false;
+						}
+
+						this.$emit( 'load-more', currentPage );
+					}
+				}
+			} );
+
+			var app = new Vue({
 				el: '#vue-posts-list',
 				data: {
 					posts: [],
 					totalPosts: 0,
 					totalPages: 0,
-					postPerPage: 9,
+					postPerPage: 4,
 					page: 1
 				},
 				methods: {
-					fetchPhotos: function(page) {
+					fetchPosts: function( page ) {
 						var restApiUrl = `${ window.vuePostsList.siteUrl }/wp-json/wp/v2/posts`,
 							options = {
 								params: {
@@ -39,7 +68,7 @@
 					}
 				},
 				created: function() {
-					this.fetchPhotos( this.page );
+					this.fetchPosts( this.page );
 				}
 			}); // End Vue Instance
 

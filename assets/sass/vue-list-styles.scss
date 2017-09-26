@@ -1,0 +1,25 @@
+#vue-posts-list {
+	.more-button-wrapper {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+
+		button {
+
+		}
+	}
+}
+
+.vue-posts-list {
+	position: relative;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	width: 100%;
+
+	&__item {
+		width: 25%;
+		padding: 5px;
+	}
+}

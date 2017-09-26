@@ -322,6 +322,7 @@ if ( ! class_exists( '__Tm_Theme_Setup' ) ) {
 			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/context.php';
 			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/customizer.php';
 			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/hooks.php';
+			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/vue-template.php';
 			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/wp-rest-api-end-point.php';
 			require_once trailingslashit( __TM_THEME_DIR ) . 'inc/register-plugins.php';
 
